@@ -1,0 +1,11 @@
+.drugListWrapper {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px 40px;
+}
+
+.drugList {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-gap: 30px;
+}
