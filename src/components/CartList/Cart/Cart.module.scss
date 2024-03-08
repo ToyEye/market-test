@@ -1,0 +1,28 @@
+.cart {
+  position: relative;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.overviewWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.priceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

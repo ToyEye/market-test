@@ -1,17 +1,25 @@
 import Button from "../Button/Button";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
+import styled from "./Cart.module.scss";
 
 const Cart = ({ id, image, name, count, price }) => {
   return (
-    <li>
+    <li className={styled.cart}>
       <div>
+        <Button role="delete" type={MdDelete} id={id} />
         <img src={image} alt={name} />
-        <p>{name}</p>
-        <p>{price * count}</p>
-        <div>
-          <Button role="decrement" type={FaMinus} id={id} count={count} />
-          <p>{count}</p>
-          <Button role="increment" type={FaPlus} id={id} count={count} />
+        <div className={styled.overviewWrapper}>
+          <p>{name}</p>
+          <div className={styled.priceWrapper}>
+            <p>{price * count}</p>
+            <div className={styled.buttonWrapper}>
+              <Button role="decrement" type={FaMinus} id={id} count={count} />
+              <p>{count}</p>
+              <Button role="increment" type={FaPlus} id={id} count={count} />
+            </div>
+          </div>
         </div>
       </div>
     </li>

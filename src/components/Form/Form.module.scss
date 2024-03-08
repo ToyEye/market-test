@@ -1,7 +1,15 @@
+.formWrapper {
+  border: 1px solid;
+  padding: 20px 40px;
+  border-radius: 16px;
+  background-color: #ecece1;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 568px;
+  gap: 20px;
 }
 
 .form input {

@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux";
-import { getCart } from "/src/store/cartSlice/selector";
 import Cart from "./Cart/Cart";
+import Section from "/src/components/Section/Section";
+import Heading from "/src/components/Heading/Heading";
 
-const CartList = () => {
-  const { cartList } = useSelector(getCart);
+import styled from "./CartList.module.scss";
 
+const CartList = ({ cartList }) => {
   return (
-    <div>
-      <ul>
+    <Section>
+      {cartList.length === 0 && (
+        <Heading text="No drugs in your cart" tag="h2" type />
+      )}
+      <ul className={styled.list}>
         {cartList.length > 0 &&
           cartList.map(({ name, image, id, count, price }) => (
             <Cart
@@ -20,7 +23,7 @@ const CartList = () => {
             />
           ))}
       </ul>
-    </div>
+    </Section>
   );
 };
 
