@@ -11,16 +11,28 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import drugReducer from "./drugSlice/drugSlice";
+import shopReducer from "./shopSlice/shopSlice";
 
-const persistConfig = {
-  key: "root",
-  storage,
-};
+// const persistConfig = {
+//   key: "drugs",
+//   storage,
+//   whitelist: ["drugs"],
+// };
 
-const persistedReducer = persistReducer(persistConfig, drugReducer);
+// const persistConfigShop = {
+//   key: "shops",
+//   storage,
+//   whitelist: ["shops"],
+// };
+
+// const persistedReducerDrugs = persistReducer(persistConfig, drugReducer);
+// const persistedReducerShops = persistReducer(persistConfigShop, shopReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    drug: drugReducer,
+    shop: shopReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -29,4 +41,4 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

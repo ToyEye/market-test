@@ -1,4 +1,4 @@
-import Container from "components/Container/Container";
+import Container from "/src/components/Container/Container";
 import styled from "./Section.module.scss";
 
 const Section = ({ children }) => {

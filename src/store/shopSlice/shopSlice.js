@@ -7,29 +7,29 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3001/api";
 
 const handlePending = (state) => {
-  state.drugs.loading = true;
-  state.drugs.error = null;
+  state.shops.loading = true;
+  state.shops.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.drugs.loading = false;
-  state.drugs.error = action.payload;
+  state.shops.loading = false;
+  state.shops.error = action.payload;
 };
 
 const createSlice = buildCreateSlice({
   creators: { asyncThunk: asyncThunkCreator },
 });
 
-const drugSlice = createSlice({
-  name: "drugSlice",
+const shopSlice = createSlice({
+  name: "shopSlice",
   initialState: {
-    drugs: { drugList: [], loading: false, error: null },
+    shops: { shopList: [], loading: false, error: null },
   },
   reducers: (creator) => ({
-    getDrugs: creator.asyncThunk(
-      async (id, { rejectWithValue }) => {
+    getShops: creator.asyncThunk(
+      async (_, { rejectWithValue }) => {
         try {
-          const response = await axios.get(`/shopdrugs/${id}`);
+          const response = await axios.get(`/shops`);
 
           return response.data;
         } catch (error) {
@@ -39,21 +39,15 @@ const drugSlice = createSlice({
       {
         pending: handlePending,
         fulfilled: (state, { payload }) => {
-          state.drugs.loading = false;
-          state.drugs.drugList = payload;
+          state.shops.loading = false;
+          state.shops.shopList = payload;
         },
         rejected: handleRejected,
       }
     ),
   }),
-  selectors: {
-    getDrugList: (state) => state.drugs.drugList,
-    getLoading: (state) => state.drugs.loading,
-    getError: (state) => state.drugs.error,
-  },
 });
 
-export const { getDrugs } = drugSlice.actions;
-export const { getDrugList, getError, getLoading } = drugSlice.selectors;
+export const { getShops } = shopSlice.actions;
 
-export default drugSlice.reducer;
+export default shopSlice.reducer;
