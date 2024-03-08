@@ -12,26 +12,21 @@ import {
 import storage from "redux-persist/lib/storage";
 import drugReducer from "./drugSlice/drugSlice";
 import shopReducer from "./shopSlice/shopSlice";
+import CartReducer from "./cartSlice/cartSlice";
 
-// const persistConfig = {
-//   key: "drugs",
-//   storage,
-//   whitelist: ["drugs"],
-// };
+const persistConfig = {
+  key: "cart",
+  storage,
+  blacklist: ["_persist"],
+};
 
-// const persistConfigShop = {
-//   key: "shops",
-//   storage,
-//   whitelist: ["shops"],
-// };
-
-// const persistedReducerDrugs = persistReducer(persistConfig, drugReducer);
-// const persistedReducerShops = persistReducer(persistConfigShop, shopReducer);
+const persistedReducerCart = persistReducer(persistConfig, CartReducer);
 
 export const store = configureStore({
   reducer: {
     drug: drugReducer,
     shop: shopReducer,
+    cart: persistedReducerCart,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -41,4 +36,4 @@ export const store = configureStore({
     }),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

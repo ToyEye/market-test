@@ -1,13 +1,21 @@
+import { useDispatch } from "react-redux";
 import styled from "./DrugCart.module.scss";
+import { addToCart } from "/src/store/cartSlice/cartSlice";
 
-const DrugCart = ({ name, image }) => {
+const DrugCart = ({ name, image, id }) => {
+  const dispatch = useDispatch();
+
+  const addCart = () => {
+    dispatch(addToCart({ name, image, id }));
+  };
+
   return (
     <li className={styled.drugCart}>
       <div>
         <img src={image} alt={name} />
         <p className={styled.drugName}>{name}</p>
 
-        <button type="button" className={styled.button}>
+        <button type="button" className={styled.button} onClick={addCart}>
           <span className={styled.button__text}>Add Item</span>
           <span className={styled.button__icon}>
             <svg

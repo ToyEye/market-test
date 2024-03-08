@@ -13,7 +13,7 @@ const DrugList = () => {
         <ul className={styled.drugList}>
           {drugList.length > 0 &&
             drugList.map(({ image, name, _id }) => (
-              <DrugCart key={_id} name={name} image={image} />
+              <DrugCart key={_id} id={_id} name={name} image={image} />
             ))}
         </ul>
       </div>

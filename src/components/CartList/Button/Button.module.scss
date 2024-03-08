@@ -1,0 +1,24 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #c7c3c0;
+  box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+    #ffffff 1.5px 1.5px 2px 0px inset, #c7c3c0 -3.2px -3.2px 8px 0px inset;
+  cursor: pointer;
+  font-family: Montserrat;
+  transition: 0.1s ease-in-out;
+}
+
+.buttons:active {
+  box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,
+    #c7c3c0 -3.2px -3.2px 8px 0px inset;
+}
