@@ -9,8 +9,15 @@ const CartList = () => {
     <div>
       <ul>
         {cartList.length > 0 &&
-          cartList.map(({ name, image, id, count }) => (
-            <Cart key={id} id={id} image={image} name={name} count={count} />
+          cartList.map(({ name, image, id, count, price }) => (
+            <Cart
+              key={id}
+              id={id}
+              image={image}
+              name={name}
+              count={count}
+              price={price}
+            />
           ))}
       </ul>
     </div>

@@ -2,11 +2,11 @@ import { useDispatch } from "react-redux";
 import styled from "./DrugCart.module.scss";
 import { addToCart } from "/src/store/cartSlice/cartSlice";
 
-const DrugCart = ({ name, image, id }) => {
+const DrugCart = ({ name, image, id, price }) => {
   const dispatch = useDispatch();
 
   const addCart = () => {
-    dispatch(addToCart({ name, image, id }));
+    dispatch(addToCart({ name, image, id, price }));
   };
 
   return (
