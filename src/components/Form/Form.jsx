@@ -1,9 +1,10 @@
-import Section from "/src/components/Section/Section";
-import styled from "./Form.module.scss";
 import { useState } from "react";
-import Heading from "/src/components/Heading/Heading";
 
-const Form = ({ cartList, totalCost }) => {
+import Section from "/src/components/Section/Section";
+import Heading from "/src/components/Heading/Heading";
+import styled from "./Form.module.scss";
+
+const Form = ({ handleOrder, totalCost }) => {
   const [credentialt, setCredentialt] = useState({
     name: "",
     phone: "",
@@ -18,7 +19,15 @@ const Form = ({ cartList, totalCost }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...credentialt, totalCost, cartList });
+
+    handleOrder(credentialt);
+
+    setCredentialt({
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+    });
   };
 
   return (
@@ -30,7 +39,7 @@ const Form = ({ cartList, totalCost }) => {
           onSubmit={onSubmit}
         >
           <input
-            required=""
+            required
             name="name"
             placeholder="Name"
             type="text"
@@ -39,7 +48,7 @@ const Form = ({ cartList, totalCost }) => {
           />
           <input
             name="phone"
-            required=""
+            required
             placeholder="Phone number"
             type="tel"
             value={credentialt.phone}
@@ -47,7 +56,7 @@ const Form = ({ cartList, totalCost }) => {
           />
           <input
             name="email"
-            required=""
+            required
             placeholder="E-mail"
             type="email"
             value={credentialt.email}
@@ -55,7 +64,7 @@ const Form = ({ cartList, totalCost }) => {
           />
           <input
             name="address"
-            required=""
+            required
             placeholder="Address"
             type="text"
             value={credentialt.address}

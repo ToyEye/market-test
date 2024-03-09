@@ -1,6 +1,7 @@
 import { lazy, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 import Layout from "/src/components/Layout/Layout";
 import { routes } from "/src/routes";
@@ -19,13 +20,16 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Shop />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<Navigate to={routes.HOME} />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Shop />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<Navigate to={routes.HOME} />} />
+        </Route>
+      </Routes>
+      <Toaster />
+    </>
   );
 };
 
