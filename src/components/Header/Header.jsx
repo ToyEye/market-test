@@ -1,11 +1,18 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import Container from "/src/components/Container/Container";
 import AuthBar from "/src/components/AuthBar/AuthBar";
+import UserBar from "/src/components/UserBar/UserBar";
+
+import { getAuth } from "/src/store/authSlice/selector";
 
 import styled from "./Header.module.scss";
 import { routes } from "/src/routes";
 
 const Header = () => {
+  const { user } = useSelector(getAuth);
+
   return (
     <header>
       <Container>
@@ -24,8 +31,7 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-
-          <AuthBar />
+          {user ? <UserBar /> : <AuthBar />}
         </div>
       </Container>
     </header>

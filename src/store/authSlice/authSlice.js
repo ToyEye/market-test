@@ -4,6 +4,14 @@ import axios from "axios";
 
 // axios.defaults.baseURL = "http://localhost:3001/api";
 
+const setHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearHeader = () => {
+  axios.defaults.headers.common.Authorization = ``;
+};
+
 const handlePending = (state) => {
   state.loading = true;
   state.error = null;
@@ -23,7 +31,7 @@ const authSlice = createSlice({
   initialState: {
     loading: false,
     error: null,
-    user: { name: "", email: "" },
+    user: null,
     token: null,
   },
   reducers: (creator) => ({
@@ -43,6 +51,7 @@ const authSlice = createSlice({
           state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
+          setHeader(payload.token);
         },
         rejected: handleRejected,
       }
@@ -63,6 +72,8 @@ const authSlice = createSlice({
           state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
+          state.token = payload.token;
+          setHeader(payload.token);
         },
         rejected: handleRejected,
       }
