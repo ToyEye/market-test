@@ -5,13 +5,13 @@ import axios from "axios";
 // axios.defaults.baseURL = "http://localhost:3001/api";
 
 const handlePending = (state) => {
-  state.drugs.loading = true;
-  state.drugs.error = null;
+  state.loading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.drugs.loading = false;
-  state.drugs.error = action.payload;
+  state.loading = false;
+  state.error = action.payload;
 };
 
 const createSlice = buildCreateSlice({
@@ -30,7 +30,7 @@ const authSlice = createSlice({
     signUp: creator.asyncThunk(
       async (credential, { rejectWithValue }) => {
         try {
-          const response = await axios.post("/auth", credential);
+          const response = await axios.post("/auth/signup", credential);
 
           return response.data;
         } catch (error) {
@@ -40,7 +40,7 @@ const authSlice = createSlice({
       {
         pending: handlePending,
         fulfilled: (state, { payload }) => {
-          state.drugs.loading = false;
+          state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
         },
@@ -50,7 +50,7 @@ const authSlice = createSlice({
     login: creator.asyncThunk(
       async (credential, { rejectWithValue }) => {
         try {
-          const response = await axios.post("/login", credential);
+          const response = await axios.post("/auth/login", credential);
 
           return response.data;
         } catch (error) {
@@ -60,7 +60,7 @@ const authSlice = createSlice({
       {
         pending: handlePending,
         fulfilled: (state, { payload }) => {
-          state.drugs.loading = false;
+          state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
         },

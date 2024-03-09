@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Section from "/src/components/Section/Section";
-import { signUp } from "/src/store/auth/auth";
+import { signUp } from "/src/store/authSlice/authSlice";
 import style from "../AuthForm.module.scss";
 import { Link } from "react-router-dom";
 import { routes } from "/src/routes";
@@ -52,10 +52,11 @@ const SignUpForm = () => {
           <p className={style.formTitle}>Sign up to your account</p>
           <div className={style.inputContainer}>
             <input
-              label="Enter your name"
               required
               value={name}
               onChange={handleChange}
+              placeholder="Enter name"
+              name="name"
             />
           </div>
           <div className={style.inputContainer}>
@@ -65,6 +66,8 @@ const SignUpForm = () => {
               required
               value={email}
               onChange={handleChange}
+              placeholder="Enter email"
+              name="email"
             />
           </div>
           <div className={style.inputContainer}>
@@ -74,6 +77,7 @@ const SignUpForm = () => {
               required
               value={password}
               onChange={handleChange}
+              placeholder="Enter password"
             />
           </div>
           <button type="submit" className={style.submit}>

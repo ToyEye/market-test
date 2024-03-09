@@ -1,1 +1,1 @@
-export const getDrugList = (state) => state.drug.drugs;
+export const getDrugList = (state) => state.drug;

@@ -5,13 +5,13 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3001/api";
 
 const handlePending = (state) => {
-  state.drugs.loading = true;
-  state.drugs.error = null;
+  state.loading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.drugs.loading = false;
-  state.drugs.error = action.payload;
+  state.loading = false;
+  state.error = action.payload;
 };
 
 const createSlice = buildCreateSlice({
@@ -21,7 +21,9 @@ const createSlice = buildCreateSlice({
 const drugSlice = createSlice({
   name: "drugSlice",
   initialState: {
-    drugs: { drugList: [], loading: false, error: null },
+    drugList: [],
+    loading: false,
+    error: null,
   },
   reducers: (creator) => ({
     getDrugs: creator.asyncThunk(
@@ -37,8 +39,8 @@ const drugSlice = createSlice({
       {
         pending: handlePending,
         fulfilled: (state, { payload }) => {
-          state.drugs.loading = false;
-          state.drugs.drugList = payload;
+          state.loading = false;
+          state.drugList = payload;
         },
         rejected: handleRejected,
       }

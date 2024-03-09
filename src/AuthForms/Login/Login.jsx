@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { login } from "/src/store/auth/auth";
+import { login } from "/src/store/authSlice/authSlice";
 import Section from "/src/components/Section/Section";
 import style from "../AuthForm.module.scss";
 import { Link } from "react-router-dom";
@@ -49,6 +49,8 @@ const LoginForm = () => {
               required
               value={email}
               onChange={handleChange}
+              placeholder="Enter email"
+              name="email"
             />
           </div>
           <div className={style.inputContainer}>
@@ -58,6 +60,7 @@ const LoginForm = () => {
               required
               value={password}
               onChange={handleChange}
+              placeholder="Enter password"
             />
           </div>
           <button type="submit" className={style.submit}>

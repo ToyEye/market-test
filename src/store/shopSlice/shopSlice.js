@@ -7,13 +7,13 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3001/api";
 
 const handlePending = (state) => {
-  state.shops.loading = true;
-  state.shops.error = null;
+  state.loading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
-  state.shops.loading = false;
-  state.shops.error = action.payload;
+  state.loading = false;
+  state.error = action.payload;
 };
 
 const createSlice = buildCreateSlice({
@@ -23,7 +23,9 @@ const createSlice = buildCreateSlice({
 const shopSlice = createSlice({
   name: "shopSlice",
   initialState: {
-    shops: { shopList: [], loading: false, error: null },
+    shopList: [],
+    loading: false,
+    error: null,
   },
   reducers: (creator) => ({
     getShops: creator.asyncThunk(
@@ -39,8 +41,8 @@ const shopSlice = createSlice({
       {
         pending: handlePending,
         fulfilled: (state, { payload }) => {
-          state.shops.loading = false;
-          state.shops.shopList = payload;
+          state.loading = false;
+          state.shopList = payload;
         },
         rejected: handleRejected,
       }

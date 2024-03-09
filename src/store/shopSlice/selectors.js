@@ -1,1 +1,1 @@
-export const getShops = (state) => state.shop.shops;
+export const getShops = (state) => state.shop;
