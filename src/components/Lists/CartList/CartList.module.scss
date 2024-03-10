@@ -2,3 +2,9 @@
   display: grid;
   grid-gap: 14px;
 }
+
+.historyList {
+  grid-gap: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

@@ -2,14 +2,22 @@ import { useState } from "react";
 
 import Section from "/src/components/Section/Section";
 import Heading from "/src/components/Heading/Heading";
+import { useAuth } from "/src/hooks/useAuth";
+
 import styled from "./Form.module.scss";
 
 const Form = ({ handleOrder, totalCost }) => {
-  const [credentialt, setCredentialt] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    address: "",
+  const { user } = useAuth();
+
+  const [credentialt, setCredentialt] = useState(() => {
+    return user
+      ? { ...user, phone: "", address: "" }
+      : {
+          name: "",
+          email: "",
+          phone: "",
+          address: "",
+        };
   });
 
   const handleChange = (e) => {

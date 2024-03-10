@@ -14,7 +14,7 @@ const DrugCart = ({ name, image, id, price }) => {
       <div>
         <img src={image} alt={name} />
         <p className={styled.drugName}>{name}</p>
-
+        <p>{price} UAH</p>
         <button type="button" className={styled.button} onClick={addCart}>
           <span className={styled.button__text}>Add Item</span>
           <span className={styled.button__icon}>

@@ -1,4 +1,9 @@
 .drugListWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
+
   border: 1px solid black;
   border-radius: 20px;
   padding: 20px 40px;
@@ -8,4 +13,13 @@
   display: grid;
   grid-template-columns: 2fr 2fr;
   grid-gap: 30px;
+}
+
+.sortLabel {
+  margin-right: 10px;
+}
+
+.sortSelect {
+  padding: 5px;
+  font-size: 14px;
 }

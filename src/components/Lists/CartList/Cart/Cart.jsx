@@ -8,7 +8,7 @@ const Cart = ({ id, image, name, count, price, type = "shop" }) => {
   return (
     <li className={styled.cart}>
       <div>
-        <Button role="delete" type={MdDelete} id={id} />
+        {type === "shop" && <Button role="delete" type={MdDelete} id={id} />}
         <img src={image} alt={name} />
         <div className={styled.overviewWrapper}>
           <p>{name}</p>
