@@ -1,17 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import Container from "/src/components/Container/Container";
 import AuthBar from "/src/components/AuthBar/AuthBar";
 import UserBar from "/src/components/UserBar/UserBar";
 
-import { getAuth } from "/src/store/authSlice/selector";
-
 import styled from "./Header.module.scss";
 import { routes } from "/src/routes";
+import { useAuth } from "/src/hooks/useAuth";
 
 const Header = () => {
-  const { user } = useSelector(getAuth);
+  const { user } = useAuth();
 
   return (
     <header>

@@ -1,6 +1,7 @@
 import { asyncThunkCreator, buildCreateSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 // axios.defaults.baseURL = "http://localhost:3001/api";
 
@@ -33,6 +34,8 @@ const authSlice = createSlice({
     error: null,
     user: null,
     token: null,
+    isLoggedIn: false,
+    isRefreshing: false,
   },
   reducers: (creator) => ({
     signUp: creator.asyncThunk(
@@ -51,6 +54,7 @@ const authSlice = createSlice({
           state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
+          state.isLoggedIn = true;
           setHeader(payload.token);
         },
         rejected: handleRejected,
@@ -72,8 +76,33 @@ const authSlice = createSlice({
           state.loading = false;
           state.user = payload.user;
           state.token = payload.token;
-          state.token = payload.token;
+          state.isLoggedIn = true;
           setHeader(payload.token);
+        },
+        rejected: handleRejected,
+      }
+    ),
+    logout: creator.asyncThunk(
+      async (_, { rejectWithValue }) => {
+        try {
+          const { data } = await axios.post("/auth/logout");
+
+          toast.success(`See you again!`);
+
+          return data;
+        } catch (error) {
+          toast.error("Oops, something went wrong");
+          return rejectWithValue();
+        }
+      },
+      {
+        pending: handlePending,
+        fulfilled: (state) => {
+          state.loading = false;
+          state.user = null;
+          state.token = null;
+          state.isLoggedIn = false;
+          clearHeader();
         },
         rejected: handleRejected,
       }
@@ -81,6 +110,6 @@ const authSlice = createSlice({
   }),
 });
 
-export const { login, signUp } = authSlice.actions;
+export const { login, signUp, logout } = authSlice.actions;
 
 export default authSlice.reducer;
