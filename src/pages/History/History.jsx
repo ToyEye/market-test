@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import HistoryForm from "/src/components/Forms/HistoryForm/HistoryForm";
-import HistoryList from "/src/components/Lists/HistoryList/HistoryList";
+import CartList from "/src/components/Lists/CartList/CartList";
 import { getOrders } from "/src/api/api";
 
 const History = () => {
@@ -24,7 +24,7 @@ const History = () => {
   return (
     <div>
       <HistoryForm onSubmit={handleSubmit} />
-      <HistoryList orders={orders} />
+      {orders && <CartList cartList={orders} type="history" />}
     </div>
   );
 };

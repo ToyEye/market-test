@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 
 import styled from "./Cart.module.scss";
 
-const Cart = ({ id, image, name, count, price }) => {
+const Cart = ({ id, image, name, count, price, type = "shop" }) => {
   return (
     <li className={styled.cart}>
       <div>
@@ -14,11 +14,13 @@ const Cart = ({ id, image, name, count, price }) => {
           <p>{name}</p>
           <div className={styled.priceWrapper}>
             <p>{price * count}</p>
-            <div className={styled.buttonWrapper}>
-              <Button role="decrement" type={FaMinus} id={id} count={count} />
-              <p>{count}</p>
-              <Button role="increment" type={FaPlus} id={id} count={count} />
-            </div>
+            {type === "shop" && (
+              <div className={styled.buttonWrapper}>
+                <Button role="decrement" type={FaMinus} id={id} count={count} />
+                <p>{count}</p>
+                <Button role="increment" type={FaPlus} id={id} count={count} />
+              </div>
+            )}
           </div>
         </div>
       </div>
