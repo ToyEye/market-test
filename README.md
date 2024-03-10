@@ -1,8 +1,24 @@
-# React + Vite
+# For start project you did install dependencies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+run
 
-Currently, two official plugins are available:
+```js
+ npm run install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+then
+
+```js
+npm run dev
+```
+
+you definitely need to start the [backend](https://github.com/ToyEye/market-test-back)
+
+## In this project you can
+
+1. Look the medicines in different shops
+2. Add drugs to the cart
+3. Filter drugs by price
+4. On page Cart you can choose number of selected drugs and order them
+5. Also we have a history page, where you can look order history by your email
+6. But for comfort you can sign up and always see your history
