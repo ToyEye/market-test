@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { logout } from "/src/store/authSlice/authSlice";
 import { useAuth } from "/src/hooks/useAuth";
+import styled from "./UserBar.module.scss";
 
 const UserBar = () => {
   const { user } = useAuth();
@@ -10,9 +11,9 @@ const UserBar = () => {
     dispath(logout());
   };
   return (
-    <div>
+    <div className={styled.userbarWrapper}>
       <p>Hello {user.name}</p>
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={onClick} className={styled.button}>
         Logout
       </button>
     </div>

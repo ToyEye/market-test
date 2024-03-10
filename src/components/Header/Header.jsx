@@ -26,6 +26,11 @@ const Header = () => {
                 <NavLink to={routes.CART} className={styled.navLink}>
                   CART
                 </NavLink>
+              </li>{" "}
+              <li>
+                <NavLink to={routes.HISTORY} className={styled.navLink}>
+                  HISTORY
+                </NavLink>
               </li>
             </ul>
           </nav>

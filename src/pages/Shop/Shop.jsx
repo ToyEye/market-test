@@ -1,5 +1,5 @@
-import ShopList from "/src/components/ShopList/ShopList";
-import DrugList from "/src/components/DrugList/DrugList";
+import ShopList from "/src/components/Lists/ShopList/ShopList";
+import DrugList from "/src/components/Lists/DrugList/DrugList";
 
 import styled from "./Shop.module.scss";
 

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
-import CartList from "/src/components/CartList/CartList";
-import Form from "/src/components/Form/Form";
+import CartList from "/src/components/Lists/CartList/CartList";
+import Form from "/src/components/Forms/Form/Form";
 
 import { getCart } from "/src/store/cartSlice/selector";
 import styled from "./Cart.module.scss";

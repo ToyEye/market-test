@@ -14,6 +14,7 @@ const Cart = lazy(() => import("/src/pages/Cart/Cart.jsx"));
 const Shop = lazy(() => import("/src/pages/Shop/Shop.jsx"));
 const Login = lazy(() => import("/src/pages/Login/Login.jsx"));
 const Signup = lazy(() => import("/src/pages/Signup/Signup.jsx"));
+const History = lazy(() => import("/src/pages/History/History.jsx"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
         <Route path={routes.HOME} element={<Layout />}>
           <Route index element={<Shop />} />
           <Route path={routes.CART} element={<Cart />} />
+          <Route path={routes.HISTORY} element={<History />} />
           <Route
             path={routes.LOGIN}
             element={
