@@ -107,9 +107,35 @@ const authSlice = createSlice({
         rejected: handleRejected,
       }
     ),
+    currentUser: creator.asyncThunk(
+      async (_, thunkAPI) => {
+        const state = thunkAPI.getState();
+        const persistToken = state.auth.token;
+        if (persistToken === null) {
+          return thunkAPI.rejectWithValue();
+        }
+        setHeader(persistToken);
+        try {
+          const { data } = await axios.get("/auth/current");
+          toast.success(`Hello!`);
+          return data;
+        } catch (error) {
+          toast.error("Oops, something went wrong");
+        }
+      },
+      {
+        pending: handlePending,
+        fulfilled: (state, { payload }) => {
+          state.loading = false;
+          state.user = payload;
+          state.isLoggedIn = true;
+        },
+        rejected: handleRejected,
+      }
+    ),
   }),
 });
 
-export const { login, signUp, logout } = authSlice.actions;
+export const { login, signUp, logout, currentUser } = authSlice.actions;
 
 export default authSlice.reducer;
