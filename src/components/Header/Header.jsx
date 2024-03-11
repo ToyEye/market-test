@@ -9,7 +9,7 @@ import { routes } from "/src/routes";
 import { useAuth } from "/src/hooks/useAuth";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <header>
@@ -34,7 +34,7 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          {user ? <UserBar /> : <AuthBar />}
+          {isLoggedIn ? <UserBar /> : <AuthBar />}
         </div>
       </Container>
     </header>

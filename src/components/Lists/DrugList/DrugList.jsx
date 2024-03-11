@@ -3,12 +3,13 @@ import { useSelector } from "react-redux";
 
 import Section from "/src/components/Section/Section";
 import { getDrugList } from "/src/store/drugSlice/selectors";
+import Loader from "/src/components/Loader/Loader";
 import DrugCart from "./DrugCart/DrugCart";
 
 import styled from "./DrugList.module.scss";
 
 const DrugList = () => {
-  const { drugList } = useSelector(getDrugList);
+  const { drugList, loading } = useSelector(getDrugList);
 
   const [sortBy, setSortBy] = useState("default");
 
@@ -30,6 +31,7 @@ const DrugList = () => {
 
   return (
     <Section>
+      {loading && <Loader />}
       <div className={styled.drugListWrapper}>
         <div>
           <label htmlFor="sortSelect">Sort by:</label>
